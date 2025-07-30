@@ -5,7 +5,6 @@ document.addEventListener("DOMContentLoaded", function () {
     form.addEventListener("submit", function (event) {
         event.preventDefault();
 
-        // Retrieve and trim input values
         const username = document.getElementById("username").value.trim();
         const email = document.getElementById("email").value.trim();
         const password = document.getElementById("password").value.trim();
@@ -19,12 +18,11 @@ document.addEventListener("DOMContentLoaded", function () {
             messages.push("Username must be at least 3 characters long.");
         }
 
-        // Email validation using a simple pattern
+        // Email validation (strict)
         const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-
         if (!emailPattern.test(email)) {
-        isValid = false;
-        messages.push("Please enter a valid email address.");
+            isValid = false;
+            messages.push("Email must include '@' and '.' characters.");
         }
 
         // Password validation
@@ -33,16 +31,14 @@ document.addEventListener("DOMContentLoaded", function () {
             messages.push("Password must be at least 8 characters long.");
         }
 
-        // Show feedback
+        // Display feedback (EXACTLY as ALX specifies)
         feedbackDiv.style.display = "block";
         if (isValid) {
             feedbackDiv.textContent = "Registration successful!";
-            feedbackDiv.style.color = "#28a745"; // Green
-            feedbackDiv.style.backgroundColor = "#d4edda"; // Light green background
+            feedbackDiv.style.color = "#28a745";
         } else {
             feedbackDiv.innerHTML = messages.join("<br>");
-            feedbackDiv.style.color = "#d8000c"; // Red
-            feedbackDiv.style.backgroundColor = "#ffbaba"; // Light red background
+            feedbackDiv.style.color = "#dc3545";
         }
     });
 });
