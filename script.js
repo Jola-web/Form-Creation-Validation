@@ -19,10 +19,12 @@ document.addEventListener("DOMContentLoaded", function () {
             messages.push("Username must be at least 3 characters long.");
         }
 
-        // Email validation
-        if (!email.includes("@") || !email.includes(".")) {
-            isValid = false;
-            messages.push("Email must include '@' and '.' characters.");
+        // Email validation using a simple pattern
+        const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+        if (!emailPattern.test(email)) {
+        isValid = false;
+        messages.push("Please enter a valid email address.");
         }
 
         // Password validation
